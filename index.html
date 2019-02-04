@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Train Schedule Extravaganza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
 </head>
 
 <body>
 
-<div class="container-fluid the-whole-thing">
+    <div class="container-fluid the-whole-thing">
 
-    <div class="jumbotron jumbotron-fluid top-of-page">
-        <div class="text-thing">
-            <h1 class="display-4">Train Scheduler</h1>
-            <p class="lead">Come. Let us schedule trains together.</p>
+        <div class="jumbotron jumbotron-fluid top-of-page">
+            <div class="text-thing">
+                <h1 class="display-4">Train Scheduler</h1>
+                <p class="lead">Come. Let us schedule trains together.</p>
+            </div>
         </div>
+
+        <table class="table" id="train-table">
+
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Train Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">First Train</th>
+                    <th scope="col">Frequency (min)</th>
+                    <th scope="col">Next Arrival</th>
+                    <th scope="col">Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+
+        </table>
+
+        <div class="container">
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h2>Add Train</h2>
+                </div>
+
+                <div class="card-body">
+
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="train-name-input">Train Name</label>
+                                <input type="text" class="form-control" id="train-name-input" placeholder="Thomas The Tank engine">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="destination-input">Destination</label>
+                                <input type="text" class="form-control" id="destination-input" placeholder="Zimbabwe">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="first-train-input">First Train Time (HH:mm military time)</label>
+                                <input type="text" class="form-control" id="first-train-input" placeholder="24:00">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="frequency-input">Frequency (min)</label>
+                                <input type="text" class="form-control" id="frequency-input" placeholder="15">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="the-button">Punch it</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
-</div>
-
 </body>
+
 </html>
